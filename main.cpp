@@ -7,12 +7,12 @@ using namespace std;
 const float theta_spacing = 0.07; // step size for the angle that runs around the tube of the torus
 const float phi_spacing   = 0.02; // step size for the angle that rotates around the center of the torus
 
-const int screen_width = 35;
+const int screen_width = 25;
 const int screen_height = 25;
 
 const float R1 = 1; // The radius of the tube
 const float R2 = 2; // The distance from the center of the torus to the center of the tube
-const float K2 = 10; // This is a constant that acts as a depth offset in your 3D to 2D projection. It ensures the donut is positioned in front of the viewer.
+const float K2 = 5; // This is a constant that acts as a depth offset in your 3D to 2D projection. It ensures the donut is positioned in front of the viewer.
 
 const float K1 = screen_width*K2*3/(8*(R1+R2)); // Scales the projected coordinates to fit your terminal’s dimensions.
 
@@ -24,8 +24,8 @@ COORD cursorHome = {0, 0};
 int main() 
 {
     // These variables represent the rotation angles of the donut in 3D space. Incrementing them in the loop rotates the donut.
-    float A = 4;
-    float B = 2; 
+    float A = 1;
+    float B = 1; 
     
     CONSOLE_CURSOR_INFO cursorInfo;
     GetConsoleCursorInfo(hConsole, &cursorInfo);
@@ -89,10 +89,10 @@ int main()
             cout << "\n";
         }
 
-        A += 0.2;
-        B += 0.2;
+        A += 0.07;
+        B += 0.03;
 
-        Sleep(50);
+        Sleep(30);
         SetConsoleCursorPosition(hConsole, cursorHome);
     }
     return 0;
